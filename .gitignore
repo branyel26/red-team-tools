@@ -1,0 +1,54 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+
+# Next.js
+.next
+out
+dist
+build
+
+# Production
+.env.production
+.env.production.local
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Data
+.data
+.data/users.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Database
+postgres_data
+
+# Lock files (if using npm ci instead)
+# package-lock.json
+
+# Cache
+.turbo
+.eslintcache
+
+# Docker
+.dockerignore
