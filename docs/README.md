@@ -66,12 +66,12 @@ docker push usuario/red-team-tools:latest
 
 ### SAST - SonarQube
 
-\`\`\`bash
+```bash
 npx sonar-scanner \
   -Dsonar.projectKey=red-team-tools \
   -Dsonar.sources=. \
   -Dsonar.host.url=http://localhost:9000
-\`\`\`
+```
 
 ### DAST - OWASP ZAP
 
