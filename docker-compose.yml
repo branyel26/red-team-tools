@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # PostgreSQL Database
   db:
-    image: postgres:16-alpine
+    image: estifenso/postgres:16-alpine
     container_name: redteam-db
     environment:
       POSTGRES_USER: redteam

@@ -7,10 +7,21 @@ export interface User {
   createdAt: string
 }
 
-// Store persistente en /tmp (siempre escribible en cualquier entorno)
-const USERS_FILE = "/tmp/users.json"
+// Store persistente en /app/users.json (con volumen montado)
+const USERS_FILE = "/app/users.json"
 
 console.log(`[STORE] USERS_FILE=${USERS_FILE}`)
+
+// Guardar usuarios en el archivo
+function saveUsersToFile(users: Map<string, User>) {
+  try {
+    const data = Array.from(users.values())
+    writeFileSync(USERS_FILE, JSON.stringify(data, null, 2), "utf-8")
+    console.log(`[STORE] ✅ Guardados ${data.length} usuarios`)
+  } catch (error) {
+    console.error(`[STORE] ❌ Error guardando usuarios:`, error)
+  }
+}
 
 // Cargar usuarios del archivo
 function loadUsers(): Map<string, User> {
@@ -25,27 +36,16 @@ function loadUsers(): Map<string, User> {
         parsed.forEach((user) => {
           users.set(user.id, user)
         })
-        console.log(`[STORE] Cargados ${parsed.length} usuarios de ${USERS_FILE}`)
+        console.log(`[STORE] ✅ Cargados ${parsed.length} usuarios`)
       }
     } else {
-      console.log(`[STORE] Archivo de usuarios no existe aún: ${USERS_FILE}`)
+      console.log(`[STORE] ⚠️  Archivo de usuarios no existe aún`)
     }
   } catch (error) {
-    console.error(`[STORE] Error cargando usuarios de ${USERS_FILE}:`, error)
+    console.error(`[STORE] ❌ Error cargando usuarios:`, error)
   }
 
   return users
-}
-
-// Guardar usuarios en el archivo
-function saveUsersToFile(users: Map<string, User>) {
-  try {
-    const data = Array.from(users.values())
-    writeFileSync(USERS_FILE, JSON.stringify(data, null, 2), "utf-8")
-    console.log(`[STORE] Guardados ${data.length} usuarios en ${USERS_FILE}`)
-  } catch (error) {
-    console.error(`[STORE] Error guardando usuarios en ${USERS_FILE}:`, error)
-  }
 }
 
 // Map en memoria con respaldo en archivo
@@ -56,7 +56,7 @@ export function getUserByEmail(email: string): User | undefined {
   usersMap = loadUsers()
   const user = Array.from(usersMap.values()).find((user) => user.email === email)
   if (user) {
-    console.log(`[STORE] Usuario encontrado: ${email}`)
+    console.log(`[STORE] ✅ Usuario encontrado: ${email}`)
   }
   return user
 }
@@ -71,7 +71,7 @@ export function saveUser(userData: { email: string; password: string }): User {
 
   usersMap.set(user.id, user)
   saveUsersToFile(usersMap)
-  console.log(`[STORE] Usuario registrado: ${user.email}`)
+  console.log(`[STORE] ✅ Usuario registrado: ${user.email}`)
 
   return user
 }

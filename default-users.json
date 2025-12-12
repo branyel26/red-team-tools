@@ -1,0 +1,14 @@
+[
+  {
+    "id": "user-default-admin",
+    "email": "admin@redteam.com",
+    "password": "QWRtaW5AMTIzNDU2",
+    "createdAt": "2025-12-11T23:35:59.118Z"
+  },
+  {
+    "id": "user-default-demo",
+    "email": "demo@redteam.com",
+    "password": "RGVtb0AxMjM0NTY=",
+    "createdAt": "2025-12-11T23:35:59.119Z"
+  }
+]
