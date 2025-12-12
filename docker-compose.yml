@@ -23,9 +23,7 @@ services:
 
   # Next.js Application
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: estifenso/redteam-app:latest
     container_name: redteam-app
     ports:
       - "1997:1997"
