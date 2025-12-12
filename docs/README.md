@@ -53,6 +53,13 @@ docker tag red-team-tools:latest usuario/red-team-tools:latest
 docker push usuario/red-team-tools:latest
 ```
 
+---
+
+## Credenciales
+
+**email:** `demo@redteam.com`
+**password:** `Demo@123456`
+
 ## Análisis de Seguridad
 
 ### SAST - SonarQube
