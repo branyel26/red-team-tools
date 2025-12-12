@@ -13,8 +13,7 @@ Plataforma web educativa para documentar y aprender sobre herramientas de Red Te
 
 - **Frontend**: Next.js 15, React 19, TailwindCSS 4
 - **Backend**: Next.js API Routes, Server Components
-- **Base de Datos**: PostgreSQL (Supabase)
-- **Autenticación**: Supabase Auth con Row Level Security
+- **Base de Datos**: PostgreSQL 
 
 ## Instalación
 
@@ -22,7 +21,7 @@ Plataforma web educativa para documentar y aprender sobre herramientas de Red Te
 
 - Node.js 20+
 - npm o yarn
-- Cuenta de Supabase
+
 
 ### Pasos
 
@@ -36,37 +35,29 @@ Plataforma web educativa para documentar y aprender sobre herramientas de Red Te
 
 ### Build
 
-\`\`\`bash
+```shell
 docker build -t red-team-tools:latest .
-\`\`\`
+```
 
-### Run
-
-\`\`\`bash
-docker run -p 3000:3000 \
-  -e NEXT_PUBLIC_SUPABASE_URL=<url> \
-  -e NEXT_PUBLIC_SUPABASE_ANON_KEY=<key> \
-  red-team-tools:latest
-\`\`\`
 
 ### Docker Compose
 
-\`\`\`bash
+```shell
 docker-compose up -d
-\`\`\`
+```
 
 ### Push to DockerHub
 
-\`\`\`bash
+```shell
 docker tag red-team-tools:latest usuario/red-team-tools:latest
 docker push usuario/red-team-tools:latest
-\`\`\`
+```
 
 ## Análisis de Seguridad
 
 ### SAST - SonarQube
 
-```bash
+```shell
 npx sonar-scanner \
   -Dsonar.projectKey=red-team-tools \
   -Dsonar.sources=. \
@@ -75,16 +66,16 @@ npx sonar-scanner \
 
 ### DAST - OWASP ZAP
 
-\`\`\`bash
+```shell
 docker run -t owasp/zap2docker-stable \
   zap-baseline.py -t https://tu-app.vercel.app
-\`\`\`
+```
 
 ### Trivy
 
-\`\`\`bash
+```shell
 trivy image red-team-tools:latest
-\`\`\`
+```
 
 ## Licencia
 
