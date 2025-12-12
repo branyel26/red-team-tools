@@ -68,7 +68,7 @@ npx sonar-scanner \
 
 ```shell
 docker run -t owasp/zap2docker-stable \
-  zap-baseline.py -t https://tu-app.vercel.app
+  zap-baseline.py -t https://tu-app.com
 ```
 
 ### Trivy
